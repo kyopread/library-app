@@ -68,4 +68,14 @@ public class User {
     return id;
   }
 
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", age=" + age +
+            ", userLoanHistories=" + userLoanHistories +
+            '}';
+  }
 }
