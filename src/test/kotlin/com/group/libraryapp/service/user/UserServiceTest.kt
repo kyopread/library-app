@@ -4,7 +4,6 @@ import com.group.libraryapp.domain.user.User
 import com.group.libraryapp.domain.user.UserRepository
 import com.group.libraryapp.dto.user.request.UserCreateRequest
 import com.group.libraryapp.dto.user.request.UserUpdateRequest
-import org.aspectj.lang.annotation.After
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.DisplayName
@@ -49,7 +48,7 @@ class UserServiceTest @Autowired constructor(
         // given
         userRepository.saveAll(listOf(
             User("A", 20),
-            User("B", null)
+            User("B", null),
         ))
 
         // when
@@ -66,7 +65,7 @@ class UserServiceTest @Autowired constructor(
     fun updateUserNameTest() {
         // given
         val savedUser = userRepository.save(User("A", null))
-        val request = UserUpdateRequest(savedUser.id, "B")
+        val request = UserUpdateRequest(savedUser.id!!, "B")
 
         // when
         userService.updateUserName(request)
