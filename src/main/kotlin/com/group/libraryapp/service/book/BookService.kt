@@ -45,7 +45,7 @@ class BookService constructor(
 
     @Transactional(readOnly = true)
     fun countLoanedBook(): Int {
-        return userLoanHistoryRepository.findAllBySatus(UserLoanStatus.LOANED).size
+        return userLoanHistoryRepository.findAllByStatus(UserLoanStatus.LOANED).size
     }
 
     @Transactional(readOnly = true)
