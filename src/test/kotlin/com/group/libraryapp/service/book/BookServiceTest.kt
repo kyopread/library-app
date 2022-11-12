@@ -160,4 +160,19 @@ class BookServiceTest @Autowired constructor(
     private fun assertCount(results: List<BookStatResponse>, type: BookType, count: Long) {
         assertThat(results.first { result -> result.type == type }.count).isEqualTo(count)
     }
+
+    @Test
+    fun saveBook() {
+        //given
+        val request = BookRequest("이상한 나라의 엘리스", BookType.COMPUTER)
+
+        //when
+        bookService.saveBook(request)
+
+        //then
+        val books = bookRepository.findAll()
+        assertThat(books).hasSize(1)
+        assertThat(books[0].name).isEqualTo("이상한 나라의 엘리스")
+        assertThat(books[0].type).isEqualTo(BookType.COMPUTER)
+    }
 }
