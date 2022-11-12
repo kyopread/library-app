@@ -161,10 +161,11 @@ class BookServiceTest @Autowired constructor(
         assertThat(results.first { result -> result.type == type }.count).isEqualTo(count)
     }
 
+
     @Test
     fun saveBook() {
         //given
-        val request = BookRequest("이상한 나라의 엘리스", BookType.COMPUTER)
+        val request = BookRequest("그 시절 그 사람", BookType.SOCIETY)
 
         //when
         bookService.saveBook(request)
@@ -172,7 +173,7 @@ class BookServiceTest @Autowired constructor(
         //then
         val books = bookRepository.findAll()
         assertThat(books).hasSize(1)
-        assertThat(books[0].name).isEqualTo("이상한 나라의 엘리스")
-        assertThat(books[0].type).isEqualTo(BookType.COMPUTER)
+        assertThat(books[0].name).isEqualTo("그 시절 그 사람")
+        assertThat(books[0].type).isEqualTo(BookType.SOCIETY)
     }
 }
