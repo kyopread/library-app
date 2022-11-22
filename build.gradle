@@ -10,7 +10,7 @@ plugins {
     id 'org.jetbrains.kotlin.kapt' version '1.6.21'
 
     id "org.sonarqube" version "3.4.0.2513"
-    id "jacoco"
+//    id "jacoco"
 }
 
 group = 'com.group'
@@ -58,16 +58,16 @@ allOpen {
 }
 
 // jacoco의 기본설정은 html 만 생성하게 되어있으나 xml 추가를 위한 설정
-jacocoTestReport {
+/*jacocoTestReport {
     dependsOn tasks.test
     reports {
         xml.enabled(true)
         html.enabled(true)
         xml.destination(new File("build/reports/jacoco.xml"))
     }
-}
+}*/
 
-sonarqube {
+/*sonarqube {
     properties {
         property "sonar.host.url", "http://localhost:9000"
         property "sonar.login", "sqp_6a0bbbf83b5097e6844cd27ebab411f3ce7e932b"
@@ -76,7 +76,7 @@ sonarqube {
         // optional
         property "sonar.sourceEncoding", "UTF-8"
     }
-}
+}*/
 
 // sonarqube task 수행시 clean, jacocoTestReport 를 우선 실행하기 위한 설정
-tasks["sonarqube"].dependsOn(clean, jacocoTestReport)
+//tasks["sonarqube"].dependsOn(clean, jacocoTestReport)
